@@ -14,6 +14,8 @@ class Edit extends React.Component {
     this.close = this.close.bind(this);
     this.completeEdit = this.completeEdit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    //Add recipe function
+    //Function for the cancel button
     this.addInput = this.addInput.bind(this);
     this.handleIngredientEdit = this.handleIngredientEdit.bind(this);
   }
@@ -44,6 +46,11 @@ class Edit extends React.Component {
     this.close();
     this.props.editItem(this.state.originalName, this.state.recipe);
   }
+  
+  //Create a function that when users clicks cancel in the edit screen, all changes are discarded and recipe becomes original prior to the prompt for edit.
+  
+  //create a function that prompts the edit modal with an empty recipe name and at least one empty ingredient string
+    //When user clicks save, the recipe is added to our AppData array so it can be rendered to the screen.
 
   addInput() {
     const name = this.state.recipe.name;

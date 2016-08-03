@@ -15,9 +15,9 @@ class Recipes extends React.Component {
   deleteItem() {
     this.props.delete(this.props.recipe.name);
   }
-  
-  //a method that will add another recipe to our AppData array. 
- 
+
+  //a method that will add another recipe to our AppData array.
+
   render() {
     const ingredients = this.props.recipe.ingredients.map((elem, idx) => {
       return (
@@ -35,7 +35,6 @@ class Recipes extends React.Component {
         </ul>
         <Edit recipe={this.props.recipe} editItem={this.props.editItem} >Edit</Edit>
         <Button bsStyle="danger" onClick={this.deleteItem}>Delete</Button>
-        //Add Recipe button that stays fixed to the screen and is easy to navigate
       </div>
     );
   }
@@ -48,4 +47,3 @@ Recipes.propTypes = {
 };
 
 module.exports = Recipes;
-

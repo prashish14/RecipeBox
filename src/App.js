@@ -6,6 +6,7 @@ require('./main.scss');
 import React from 'react';
 import {render} from 'react-dom';
 import Recipes from './Recipes';
+import { Button } from 'react-bootstrap';
 
 const initialState = {
   recipes: [
@@ -55,12 +56,17 @@ class App extends React.Component {
   render() {
     this.setLocalStorage();
     const display = this.state.recipes.map((elem, idx) => {
-      return <Recipes editItem={this.editRecipeName} delete={this.deleteRecipe} key={idx} recipe={elem}/>
+      return (
+      <div>
+        <Recipes editItem={this.editRecipeName} delete={this.deleteRecipe} key={idx} recipe={elem}/>
+      </div>
+    )
     })
 
     return (
       <div>
         {display}
+        <div><Button bsSize="large">Add Recipe</Button></div>
       </div>
     )
   }

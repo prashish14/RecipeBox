@@ -46,9 +46,9 @@ class Edit extends React.Component {
     this.close();
     this.props.editItem(this.state.originalName, this.state.recipe);
   }
-  
+
   //Create a function that when users clicks cancel in the edit screen, all changes are discarded and recipe becomes original prior to the prompt for edit.
-  
+
   //create a function that prompts the edit modal with an empty recipe name and at least one empty ingredient string
     //When user clicks save, the recipe is added to our AppData array so it can be rendered to the screen.
 
@@ -69,8 +69,6 @@ class Edit extends React.Component {
   }
 
   render() {
-    // let popover = <Popover title="popover">very popover. such engagement</Popover>;
-    // let tooltip = <Tooltip>wow.</Tooltip>;
       // console.log(this.props.recipe);
       // console.log(localStorage.getItem(this.props.recipe));
     const ingredients = this.state.recipe.ingredients.map((elem, idx) => {

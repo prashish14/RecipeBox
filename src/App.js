@@ -7,7 +7,8 @@ import React from 'react';
 import {render} from 'react-dom';
 import Recipes from './Recipes';
 import Edit from './Edit';
-import { Button } from 'react-bootstrap';
+import Add from './Add';
+// import { Button } from 'react-bootstrap';
 
 const initialState = {
   recipes: [
@@ -72,7 +73,7 @@ class App extends React.Component {
     return (
       <div>
         {display}
-        <Edit bsSize="large" editItem={this.createRecipe} key={0} >Add Recipe</Edit>
+        <Add recipe={null} editItem={this.createRecipe} key={0} >Add Recipe</Add>
       </div>
     )
   }

@@ -31,17 +31,12 @@ class App extends React.Component {
     }
     this.state = JSON.parse(localStorage.getItem('appState'));
     this.editRecipeName = this.editRecipeName.bind(this);
-    this.createRecipe = this.createRecipe.bind(this);
     this.setLocalStorage = this.setLocalStorage.bind(this);
     this.deleteRecipe = this.deleteRecipe.bind(this);
   }
 
   setLocalStorage () {
     localStorage.setItem('appState', JSON.stringify(this.state));
-  }
-
-  createRecipe() {
-    return null;
   }
 
   editRecipeName(oldName, newItem) {
@@ -73,7 +68,7 @@ class App extends React.Component {
     return (
       <div>
         {display}
-        <Add recipe={null} editItem={this.createRecipe} key={0} >Add Recipe</Add>
+        <Add recipe={null} editItem={this.editRecipeName} key={0} >Add Recipe</Add>
       </div>
     )
   }

@@ -7,8 +7,11 @@ class Add extends React.Component {
     super(props);
     this.state = {
       showModal: false,
-      originalName: this.props.recipe.name,
-      recipe: this.props.recipe
+      originalName: '',
+      recipe: {
+        name: '',
+        ingredients:['']
+      }
     };
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
@@ -78,16 +81,17 @@ class Add extends React.Component {
         onChange={this.handleIngredientEdit}
         value={elem} />
     });
+
     return (
       <div>
         <Button
-          bsStyle="info"
+          bsStyle="success"
           onClick={this.open}>
-          Edit
+          Add Recipe
         </Button>
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
-            <Modal.Title>Edit Recipe</Modal.Title>
+            <Modal.Title>Add a new Recipe</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="form">
@@ -112,8 +116,7 @@ class Add extends React.Component {
     )}
 }
 
-Edit.propTypes = {
-  recipe: React.PropTypes.object.isRequired,
+Add.propTypes = {
   editItem: React.PropTypes.func.isRequired
 }
 

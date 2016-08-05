@@ -17,6 +17,7 @@ class Edit extends React.Component {
     //Add recipe function
     //Function for the cancel button
     this.addInput = this.addInput.bind(this);
+    this.removeInput = this.removeInput.bind(this);
     this.handleIngredientEdit = this.handleIngredientEdit.bind(this);
   }
 
@@ -27,11 +28,9 @@ class Edit extends React.Component {
   }
 
   handleIngredientEdit(event) {
-    console.log(event.target);
     const name = this.state.recipe.name;
     const ingredients = this.state.recipe.ingredients;
     const newState = ingredients.map((elem, idx) => {
-      console.log(idx, +event.target.id, 'matching', idx === +event.target.id);
       if (idx === +event.target.id) {
 
         return event.target.value;
@@ -58,6 +57,13 @@ class Edit extends React.Component {
     const recipe = {name, ingredients: [...ingredients, ""]};
     //this.props.editItem(this.state.originalName, recipe);
     this.setState({recipe})
+  }
+
+  removeInput() {
+    const name = this.state.recipe.name;
+    const ingredients = this.state.recipe.ingredients.slice(0, -1);
+    const recipe = {name, ingredients};
+    this.setState({recipe});
   }
 
   close() {
@@ -99,7 +105,7 @@ class Edit extends React.Component {
             <label htmlFor="ingredients">ingredients</label>
             {ingredients}
             <Button bsStyle="success" onClick={this.addInput}>Add</Button>
-
+            <Button bsStyle="danger" onClick={this.removeInput}>Remove</Button>
             </div>
 
           </Modal.Body>

@@ -55,6 +55,13 @@ class App extends React.Component {
   addRecipe(newItem) {
     const oldState = this.state.recipes;
     const newState = [...this.state.recipes, newItem];
+    if(newState[newState.length -1 ].name == '') {
+      newState[newState.length -1 ].name = 'Unnamed Recipe';
+    }
+    if(newState[newState.length -1].ingredients.length <= 1 ) {
+      newState[newState.length -1].ingredients[0] = 'No ingredients listed'
+    }
+
     this.setState({ recipes: newState })
   }
 

@@ -33,6 +33,7 @@ class App extends React.Component {
     this.editRecipeName = this.editRecipeName.bind(this);
     this.setLocalStorage = this.setLocalStorage.bind(this);
     this.deleteRecipe = this.deleteRecipe.bind(this);
+    this.addRecipe = this.addRecipe.bind(this);
   }
 
   setLocalStorage () {
@@ -41,6 +42,7 @@ class App extends React.Component {
 
   editRecipeName(oldName, newItem) {
     const oldState = this.state.recipes;
+    console.log(oldState);
     const newState = oldState.map(elem => {
       if (elem.name === oldName) {
         return newItem;
@@ -48,6 +50,12 @@ class App extends React.Component {
       return elem;
     });
     this.setState({recipes: newState});
+  }
+
+  addRecipe(newItem) {
+    const oldState = this.state.recipes;
+    const newState = [...this.state.recipes, newItem];
+    this.setState({ recipes: newState })
   }
 
   deleteRecipe(name) {
@@ -68,7 +76,7 @@ class App extends React.Component {
     return (
       <div>
         {display}
-        <Add recipe={null} editItem={this.editRecipeName} key={0} >Add Recipe</Add>
+        <Add editItem={this.addRecipe} key={0} >Add Recipe</Add>
       </div>
     )
   }

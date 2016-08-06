@@ -17,6 +17,7 @@ class Add extends React.Component {
     this.close = this.close.bind(this);
     this.completeEdit = this.completeEdit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.removeInput = this.removeInput.bind(this);
     //Add recipe function
     //Function for the cancel button
     this.addInput = this.addInput.bind(this);
@@ -47,7 +48,7 @@ class Add extends React.Component {
   completeEdit() {
     //Need to update parent div with new items.
     this.close();
-    this.props.editItem(this.state.originalName, this.state.recipe);
+    this.props.editItem(this.state.recipe);
   }
 
   //Create a function that when users clicks cancel in the edit screen, all changes are discarded and recipe becomes original prior to the prompt for edit.
@@ -62,6 +63,14 @@ class Add extends React.Component {
     //this.props.editItem(this.state.originalName, recipe);
     this.setState({recipe})
   }
+
+  removeInput() {
+    const name = this.state.recipe.name;
+    const ingredients = this.state.recipe.ingredients.slice(0, -1);
+    const recipe = {name, ingredients};
+    this.setState({recipe});
+  }
+
 
   close() {
     this.setState({ showModal: false });
@@ -103,6 +112,7 @@ class Add extends React.Component {
             <label htmlFor="ingredients">ingredients</label>
             {ingredients}
             <Button bsStyle="success" onClick={this.addInput}>Add</Button>
+            <Button bsStyle="danger" onClick={this.removeInput}>Remove</Button>
 
             </div>
 

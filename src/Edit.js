@@ -8,14 +8,14 @@ class Edit extends React.Component {
     this.state = {
       showModal: false,
       originalName: this.props.recipe.name,
+      originalIngredients: this.props.recipe.ingredients,
       recipe: this.props.recipe
     };
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
     this.completeEdit = this.completeEdit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    //Add recipe function
-    //Function for the cancel button
+    this.cancelEdit = this.cancelEdit.bind(this);
     this.addInput = this.addInput.bind(this);
     this.removeInput = this.removeInput.bind(this);
     this.handleIngredientEdit = this.handleIngredientEdit.bind(this);
@@ -46,7 +46,16 @@ class Edit extends React.Component {
     this.props.editItem(this.state.originalName, this.state.recipe);
   }
 
+
   //Create a function that when users clicks cancel in the edit screen, all changes are discarded and recipe becomes original prior to the prompt for edit.
+  cancelEdit() {
+
+    const name = this.state.originalName;
+    const ingredients = this.state.originalIngredients;
+    this.setState({recipe: {name, ingredients}});
+    this.close();
+
+  }
 
   //create a function that prompts the edit modal with an empty recipe name and at least one empty ingredient string
     //When user clicks save, the recipe is added to our AppData array so it can be rendered to the screen.
@@ -75,8 +84,6 @@ class Edit extends React.Component {
   }
 
   render() {
-      // console.log(this.props.recipe);
-      // console.log(localStorage.getItem(this.props.recipe));
     const ingredients = this.state.recipe.ingredients.map((elem, idx) => {
       return <input name="ingredients"
         id={idx}
@@ -111,7 +118,7 @@ class Edit extends React.Component {
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.completeEdit}>Save</Button>
-            <Button onClick={this.close}>Cancel</Button>
+            <Button onClick={this.cancelEdit}>Cancel</Button>
           </Modal.Footer>
         </Modal>
       </div>

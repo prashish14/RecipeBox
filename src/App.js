@@ -6,7 +6,6 @@ require('./main.scss');
 import React from 'react';
 import {render} from 'react-dom';
 import Recipes from './Recipes';
-import Edit from './Edit';
 import Add from './Add';
 // import { Button } from 'react-bootstrap';
 
@@ -42,7 +41,6 @@ class App extends React.Component {
 
   editRecipeName(oldName, newItem) {
     const oldState = this.state.recipes;
-    console.log(oldState);
     const newState = oldState.map(elem => {
       if (elem.name === oldName) {
         return newItem;

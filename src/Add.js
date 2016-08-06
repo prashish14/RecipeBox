@@ -8,6 +8,7 @@ class Add extends React.Component {
     this.state = {
       showModal: false,
       originalName: '',
+      originalIngredients: '',
       recipe: {
         name: '',
         ingredients:['']
@@ -18,8 +19,7 @@ class Add extends React.Component {
     this.completeEdit = this.completeEdit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.removeInput = this.removeInput.bind(this);
-    //Add recipe function
-    //Function for the cancel button
+    this.cancelAdd = this.cancelAdd.bind(this);
     this.addInput = this.addInput.bind(this);
     this.handleIngredientEdit = this.handleIngredientEdit.bind(this);
   }
@@ -52,7 +52,12 @@ class Add extends React.Component {
   }
 
   //Create a function that when users clicks cancel in the edit screen, all changes are discarded and recipe becomes original prior to the prompt for edit.
-
+  cancelAdd() {
+    const name = '';
+    const ingredients = [''];
+    this.setState({recipe: {name, ingredients}});
+    this.close()
+  }
   //create a function that prompts the edit modal with an empty recipe name and at least one empty ingredient string
     //When user clicks save, the recipe is added to our AppData array so it can be rendered to the screen.
 
@@ -81,8 +86,6 @@ class Add extends React.Component {
   }
 
   render() {
-      // console.log(this.props.recipe);
-      // console.log(localStorage.getItem(this.props.recipe));
     const ingredients = this.state.recipe.ingredients.map((elem, idx) => {
       return <input name="ingredients"
         id={idx}
@@ -119,7 +122,7 @@ class Add extends React.Component {
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.completeEdit}>Save</Button>
-            <Button onClick={this.close}>Cancel</Button>
+            <Button onClick={this.cancelAdd}>Cancel</Button>
           </Modal.Footer>
         </Modal>
       </div>

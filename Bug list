@@ -1,0 +1,10 @@
+-If ingredient list is updated and then the prompt is brought up and canceled, the original list is populated in edit modal.
+
+-The interface in the edit prompt becomes centered when there is less than or equal to one input
+
+-Pressing enter does not add another ingredient to the list.
+
+-Empty ingredients still show up on the list, when they should be deleted.
+
+-In the Add module, if a recipe is added and the user presses the button again, the original data is still populated. The way to clear it is by opening the module and
+clicking cancel.

@@ -44,6 +44,9 @@ class Edit extends React.Component {
     //Need to update parent div with new items.
     this.close();
     this.props.editItem(this.state.originalName, this.state.recipe);
+    this.setState({ originalName: this.state.recipe.name, originalIngredients: this.state.recipe.ingredients})
+    console.log(this.state.originalIngredients);
+    console.log(this.state.ingredients);
   }
 
 
@@ -52,7 +55,8 @@ class Edit extends React.Component {
 
     const name = this.state.originalName;
     const ingredients = this.state.originalIngredients;
-    this.setState({recipe: {name, ingredients}});
+    this.setState({recipe: {name, ingredients} });
+    console.log(this.state.originalName + " " + this.state.originalIngredients);
     this.close();
 
   }

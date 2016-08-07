@@ -49,6 +49,7 @@ class Add extends React.Component {
     //Need to update parent div with new items.
     this.close();
     this.props.editItem(this.state.recipe);
+    this.setState({ recipe: {name: '', ingredients: [''] }})
   }
 
   //Create a function that when users clicks cancel in the edit screen, all changes are discarded and recipe becomes original prior to the prompt for edit.

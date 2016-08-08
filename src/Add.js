@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
+import keydown from 'react-keydown';
+
 
 class Add extends React.Component {
   constructor(props) {
@@ -22,6 +24,15 @@ class Add extends React.Component {
     this.cancelAdd = this.cancelAdd.bind(this);
     this.addInput = this.addInput.bind(this);
     this.handleIngredientEdit = this.handleIngredientEdit.bind(this);
+    this.handleKeyEvent = this.handleKeyEvent.bind(this);
+  }
+
+
+  handleKeyEvent(event) {
+    console.log(event.target.id);
+    if(event.keyCode == 13 && event.target.id == this.state.recipe.ingredients.length - 1) {
+      this.addInput();
+    }
   }
 
   handleChange(event) {
@@ -70,11 +81,20 @@ class Add extends React.Component {
     this.setState({recipe})
   }
 
+  addInputKey(event) {
+    console.log("enter key was entered")
+    if(event.charCode == 13) {
+      this.addInput();
+    }
+  }
+
   removeInput() {
     const name = this.state.recipe.name;
     const ingredients = this.state.recipe.ingredients.slice(0, -1);
     const recipe = {name, ingredients};
-    this.setState({recipe});
+    if(this.state.recipe.ingredients.length >= 2) {
+      this.setState({recipe});
+    }
   }
 
 
@@ -92,7 +112,9 @@ class Add extends React.Component {
         id={idx}
         key={idx} type="text"
         onChange={this.handleIngredientEdit}
-        value={elem} />
+        value={elem}
+        onKeyDown={this.handleKeyEvent}
+        autoFocus={true} />
     });
 
     return (

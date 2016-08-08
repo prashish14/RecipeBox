@@ -76,7 +76,9 @@ class Edit extends React.Component {
     const name = this.state.recipe.name;
     const ingredients = this.state.recipe.ingredients.slice(0, -1);
     const recipe = {name, ingredients};
-    this.setState({recipe});
+    if(this.state.recipe.ingredients.length >= 2) {
+      this.setState({recipe});
+    }
   }
 
   close() {
@@ -115,8 +117,10 @@ class Edit extends React.Component {
             <div className="form">
             <label htmlFor="ingredients">ingredients</label>
             {ingredients}
+            <div className="form">
             <Button bsStyle="success" onClick={this.addInput}>Add</Button>
             <Button bsStyle="danger" onClick={this.removeInput}>Remove</Button>
+            </div>
             </div>
 
           </Modal.Body>

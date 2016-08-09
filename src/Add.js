@@ -1,8 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
-import keydown from 'react-keydown';
-
 
 class Add extends React.Component {
   constructor(props) {
@@ -29,7 +27,6 @@ class Add extends React.Component {
 
 
   handleKeyEvent(event) {
-    console.log(event.target.id);
     if(event.keyCode == 13 && event.target.id == this.state.recipe.ingredients.length - 1) {
       this.addInput();
     }
@@ -82,7 +79,6 @@ class Add extends React.Component {
   }
 
   addInputKey(event) {
-    console.log("enter key was entered")
     if(event.charCode == 13) {
       this.addInput();
     }
@@ -108,13 +104,13 @@ class Add extends React.Component {
 
   render() {
     const ingredients = this.state.recipe.ingredients.map((elem, idx) => {
-      return <input name="ingredients"
-        id={idx}
-        key={idx} type="text"
-        onChange={this.handleIngredientEdit}
-        value={elem}
-        onKeyDown={this.handleKeyEvent}
-        autoFocus={true} />
+        return <input name="ingredients"
+          id={idx}
+          key={idx} type="text"
+          onChange={this.handleIngredientEdit}
+          value={elem}
+          onKeyDown={this.handleKeyEvent}
+          autoFocus={true} />
     });
 
     return (
@@ -137,8 +133,10 @@ class Add extends React.Component {
             <div className="form">
             <label htmlFor="ingredients">ingredients</label>
             {ingredients}
+            <div className="form">
             <Button bsStyle="success" onClick={this.addInput}>Add</Button>
             <Button bsStyle="danger" onClick={this.removeInput}>Remove</Button>
+            </div>
 
             </div>
 

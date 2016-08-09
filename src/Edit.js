@@ -19,6 +19,7 @@ class Edit extends React.Component {
     this.addInput = this.addInput.bind(this);
     this.removeInput = this.removeInput.bind(this);
     this.handleIngredientEdit = this.handleIngredientEdit.bind(this);
+    this.handleKeyEvent = this.handleKeyEvent.bind(this);
   }
 
   handleChange(event) {
@@ -40,13 +41,19 @@ class Edit extends React.Component {
     this.setState({recipe: {name, ingredients: newState}});
   }
 
+  handleKeyEvent(event) {
+    console.log(event.target.id);
+    if(event.keyCode == 13 && event.target.id == this.state.recipe.ingredients.length - 1) {
+      this.addInput();
+    }
+  }
+
   completeEdit() {
     //Need to update parent div with new items.
+
     this.close();
     this.props.editItem(this.state.originalName, this.state.recipe);
     this.setState({ originalName: this.state.recipe.name, originalIngredients: this.state.recipe.ingredients})
-    console.log(this.state.originalIngredients);
-    console.log(this.state.ingredients);
   }
 
 
@@ -95,7 +102,9 @@ class Edit extends React.Component {
         id={idx}
         key={idx} type="text"
         onChange={this.handleIngredientEdit}
-        value={elem} />
+        onKeyDown={this.handleKeyEvent}
+        value={elem}
+        autoFocus={true} />
     });
     return (
       <div>

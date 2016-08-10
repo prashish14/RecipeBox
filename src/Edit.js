@@ -20,6 +20,7 @@ class Edit extends React.Component {
     this.removeInput = this.removeInput.bind(this);
     this.handleIngredientEdit = this.handleIngredientEdit.bind(this);
     this.handleKeyEvent = this.handleKeyEvent.bind(this);
+    this.filterIngredients = this.filterIngredients.bind(this);
   }
 
   handleChange(event) {
@@ -32,7 +33,7 @@ class Edit extends React.Component {
     const name = this.state.recipe.name;
     const ingredients = this.state.recipe.ingredients;
     const newState = ingredients.map((elem, idx) => {
-      if (idx === +event.target.id) {
+      if (idx === +event.target.id && event.target.value !== '') {
 
         return event.target.value;
       }
@@ -41,8 +42,16 @@ class Edit extends React.Component {
     this.setState({recipe: {name, ingredients: newState}});
   }
 
+  filterIngredients(ingred) {
+    var ingredients = ingred.filter(function(elem) {
+      if(elem !== '') {
+        return elem;
+      }
+    })
+    return ingredients;
+  }
+
   handleKeyEvent(event) {
-    console.log(event.target.id);
     if(event.keyCode == 13 && event.target.id == this.state.recipe.ingredients.length - 1) {
       this.addInput();
     }
@@ -50,8 +59,12 @@ class Edit extends React.Component {
 
   completeEdit() {
     //Need to update parent div with new items.
+    const name = this.state.recipe.name;
+    const ingredients = this.filterIngredients(this.state.recipe.ingredients);
 
     this.close();
+    this.setState({recipe: {name, ingredients }})
+    console.log(this.state.recipe);
     this.props.editItem(this.state.originalName, this.state.recipe);
     this.setState({ originalName: this.state.recipe.name, originalIngredients: this.state.recipe.ingredients})
   }
@@ -63,7 +76,6 @@ class Edit extends React.Component {
     const name = this.state.originalName;
     const ingredients = this.state.originalIngredients;
     this.setState({recipe: {name, ingredients} });
-    console.log(this.state.originalName + " " + this.state.originalIngredients);
     this.close();
 
   }
@@ -98,13 +110,15 @@ class Edit extends React.Component {
 
   render() {
     const ingredients = this.state.recipe.ingredients.map((elem, idx) => {
-      return <input name="ingredients"
-        id={idx}
-        key={idx} type="text"
-        onChange={this.handleIngredientEdit}
-        onKeyDown={this.handleKeyEvent}
-        value={elem}
-        autoFocus={true} />
+      if(elem !== '') {
+        return <input name="ingredients"
+          id={idx}
+          key={idx} type="text"
+          onChange={this.handleIngredientEdit}
+          onKeyDown={this.handleKeyEvent}
+          value={elem}
+          autoFocus={true} />
+      }
     });
     return (
       <div>

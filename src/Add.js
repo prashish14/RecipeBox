@@ -53,9 +53,22 @@ class Add extends React.Component {
     this.setState({recipe: {name, ingredients: newState}});
   }
 
+  filterIngredients(ingred) {
+    var ingredients = ingred.filter(function(elem) {
+      if(elem !== '') {
+        return elem;
+      }
+    })
+    return ingredients;
+  }
+
   completeEdit() {
     //Need to update parent div with new items.
+    const ingredients = this.filterIngredients(this.state.recipe.ingredients);
+    const name = this.state.recipe.name;
+
     this.close();
+    this.setState({recipe: {name, ingredients }})
     this.props.editItem(this.state.recipe);
     this.setState({ recipe: {name: '', ingredients: [''] }})
   }

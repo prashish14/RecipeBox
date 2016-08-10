@@ -20,9 +20,11 @@ class Recipes extends React.Component {
 
   render() {
     const ingredients = this.props.recipe.ingredients.map((elem, idx) => {
-      return (
-        <li key={idx}>{elem}</li>
-      )
+      if(elem !== '') {
+        return (
+          <li key={idx}>{elem}</li>
+        )
+      }
     });
 
     return (

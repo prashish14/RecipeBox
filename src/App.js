@@ -50,8 +50,10 @@ class App extends React.Component {
     this.setState({recipes: newState});
   }
 
+
   addRecipe(newItem) {
     const newState = [...this.state.recipes, newItem];
+    console.log(newState);
     if(newState[newState.length -1 ].name == '') {
       newState[newState.length -1 ].name = 'Unnamed Recipe';
     }

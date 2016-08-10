@@ -89,6 +89,7 @@ class Edit extends React.Component {
     const recipe = {name, ingredients: [...ingredients, ""]};
     //this.props.editItem(this.state.originalName, recipe);
     this.setState({recipe})
+    console.log(this.state.recipe)
   }
 
   removeInput() {
@@ -110,7 +111,6 @@ class Edit extends React.Component {
 
   render() {
     const ingredients = this.state.recipe.ingredients.map((elem, idx) => {
-      if(elem !== '') {
         return <input name="ingredients"
           id={idx}
           key={idx} type="text"
@@ -118,7 +118,6 @@ class Edit extends React.Component {
           onKeyDown={this.handleKeyEvent}
           value={elem}
           autoFocus={true} />
-      }
     });
     return (
       <div>

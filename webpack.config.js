@@ -1,4 +1,3 @@
-// var Webpack = require('webpack'); You aren't using this import
 var babelPresets = {presets: ['react', 'es2015']};
 var path = require('path');
 

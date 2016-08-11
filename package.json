@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --context-base --hot"
+    "start": "webpack-dev-server --context-base --hot",
+    "postinstall": "webpack-dev-server --context-base --hot"
   },
   "author": "Daniel Stockham",
   "license": "ISC",

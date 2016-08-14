@@ -4,7 +4,7 @@ var webpack = require('webpack');
 
 module.exports = {
   context: __dirname,
-  entry: ['./src/index'],
+  entry: ['./src'],
   output: {
     path: __dirname + "/src",
     filename: 'app.js'

@@ -1,6 +1,6 @@
-var babelPresets = {presets: ['react', 'es2015']};
 var path = require('path');
 var webpack = require('webpack');
+var babelPresets = {presets: ['react', 'es2015']};
 
 module.exports = {
   context: __dirname,
@@ -12,7 +12,7 @@ module.exports = {
   devtool: 'source-map',
   plugins: [
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJSPlugin({
+    new webpack.optimize.UglifyJsPlugin({
       minimize: true,
       mangle: false,
       compress: {

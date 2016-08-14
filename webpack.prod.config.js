@@ -4,10 +4,10 @@ var babelPresets = {presets: ['react', 'es2015']};
 
 module.exports = {
   context: __dirname,
-  entry: ['./src'],
+  entry: ['./src/App.js'],
   output: {
     path: __dirname + "/src",
-    filename: 'App.js'
+    filename: 'app.js'
   },
   devtool: 'source-map',
   plugins: [

@@ -7,7 +7,7 @@ module.exports = {
   entry: ['./src'],
   output: {
     path: __dirname + "/src",
-    filename: 'app.js'
+    filename: 'App.js'
   },
   devtool: 'source-map',
   plugins: [

@@ -1,6 +1,10 @@
 //requires the main stylesheet from Sass sourcemap
 require('./main.scss');
 
+//Left to go:
+//  1.) Create "cards" that users can click on to get the rest of the data
+//  2.) Add another field which is the instruction fields
+//  3.) Plan for a more permanment setLocalStorage
 
 //Important React Modules
 import React from 'react';

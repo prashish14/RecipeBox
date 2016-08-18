@@ -77,8 +77,10 @@ class App extends React.Component {
     this.setLocalStorage();
     const display = this.state.recipes.map((elem, idx) => {
       return (
-      <div>
-        <Recipes editItem={this.editRecipeName} delete={this.deleteRecipe} key={idx} recipe={elem}/>
+      <div className="row">
+        <div>
+          <Recipes editItem={this.editRecipeName} delete={this.deleteRecipe} key={idx} recipe={elem}/>
+        </div>
       </div>
     )
     })

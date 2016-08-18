@@ -1,15 +1,11 @@
 body {
+  display: inline;
   background: #f2f2f2;
 }
 
 h1 {
   font-size: 2em;
 
-}
-
-Button {
-  margin-top: 30px;
-  margin: 10px;
 }
 
 li {
@@ -42,6 +38,11 @@ label {
   float: left;
   margin-right: 20px;
   text-align: right
+}
+
+Button {
+  margin-top: 30px;
+  margin: 10px;
 }
 
 .form {

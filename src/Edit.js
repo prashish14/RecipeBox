@@ -33,10 +33,10 @@ class Edit extends React.Component {
     const name = this.state.recipe.name;
     const ingredients = this.state.recipe.ingredients;
     const newState = ingredients.map((elem, idx) => {
-      if (idx === +event.target.id && event.target.value !== '') {
-
+      if (idx === +event.target.id) {
         return event.target.value;
       }
+
       return elem;
     });
     this.setState({recipe: {name, ingredients: newState}});
@@ -89,7 +89,6 @@ class Edit extends React.Component {
     const recipe = {name, ingredients: [...ingredients, ""]};
     //this.props.editItem(this.state.originalName, recipe);
     this.setState({recipe})
-    console.log(this.state.recipe)
   }
 
   removeInput() {

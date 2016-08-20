@@ -1,5 +1,4 @@
 body {
-  display: inline;
   background: #f2f2f2;
 }
 
@@ -45,7 +44,34 @@ Button {
   margin: 10px;
 }
 
+.container {
+  margin: 0 auto;
+}
+
+
+.recipes {
+  display:flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
 .form {
   flex-direction: column;
-  margin: 5 auto;
+  margin: 5px auto;
+}
+
+.add {
+  position: absolute;
+  top: 400px;
+}
+
+.recipes > div {
+  // display: flex;
+  flex-basis: 200px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
+  border: solid black 1px;
 }

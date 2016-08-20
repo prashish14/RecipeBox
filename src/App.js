@@ -57,7 +57,6 @@ class App extends React.Component {
 
   addRecipe(newItem) {
     const newState = [...this.state.recipes, newItem];
-    console.log(newState);
     if(newState[newState.length -1 ].name == '') {
       newState[newState.length -1 ].name = 'Unnamed Recipe';
     }
@@ -75,20 +74,19 @@ class App extends React.Component {
 
   render() {
     this.setLocalStorage();
+
     const display = this.state.recipes.map((elem, idx) => {
       return (
-      <div className="row">
-        <div>
           <Recipes editItem={this.editRecipeName} delete={this.deleteRecipe} key={idx} recipe={elem}/>
-        </div>
-      </div>
     )
     })
 
     return (
       <div>
-        {display}
-        <Add editItem={this.addRecipe} key={0} >Add Recipe</Add>
+        <div className="recipes">
+          {display}
+        </div>
+        <Add className="add" editItem={this.addRecipe} key={0}>Add Recipe</Add>
       </div>
     )
   }

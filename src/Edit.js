@@ -64,7 +64,6 @@ class Edit extends React.Component {
 
     this.close();
     this.setState({recipe: {name, ingredients }})
-    console.log(this.state.recipe);
     this.props.editItem(this.state.originalName, this.state.recipe);
     this.setState({ originalName: this.state.recipe.name, originalIngredients: this.state.recipe.ingredients})
   }

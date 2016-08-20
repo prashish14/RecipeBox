@@ -19,24 +19,23 @@ class Recipes extends React.Component {
   //a method that will add another recipe to our AppData array.
 
   render() {
-    const ingredients = this.props.recipe.ingredients.map((elem, idx) => {
-      if(elem !== '') {
-        return (
-          <li key={idx}>{elem}</li>
-        )
-      }
-    });
+    // const ingredients = this.props.recipe.ingredients.map((elem, idx) => {
+    //   if(elem !== '') {
+    //     return (
+    //       <li key={idx}>{elem}</li>
+    //     )
+    //   }
+    // });
 
     return (
       <div>
-        <h1>
+        <h3>
           {this.props.recipe.name}
-        </h1>
-        <ul>
-          { ingredients }
-        </ul>
-        <Edit recipe={this.props.recipe} editItem={this.props.editItem} >Edit</Edit>
-        <Button bsStyle="danger" onClick={this.deleteItem}>Delete</Button>
+        </h3>
+        <div>
+          <Edit recipe={this.props.recipe} editItem={this.props.editItem} >Edit</Edit>
+          <Button bsStyle="danger" onClick={this.deleteItem}>Delete</Button>
+        </div>
       </div>
     );
   }

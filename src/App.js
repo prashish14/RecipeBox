@@ -86,7 +86,7 @@ class App extends React.Component {
         <div className="recipes">
           {display}
         </div>
-        <Add className="add" editItem={this.addRecipe} key={0}>Add Recipe</Add>
+        <Add editItem={this.addRecipe} key={0}>Add Recipe</Add>
       </div>
     )
   }

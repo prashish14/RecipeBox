@@ -130,6 +130,7 @@ class Add extends React.Component {
       <div>
         <Button
           bsStyle="success"
+          className="add"
           onClick={this.open}>
           Add Recipe
         </Button>

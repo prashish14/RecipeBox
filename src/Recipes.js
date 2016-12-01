@@ -15,9 +15,7 @@ class Recipes extends React.Component {
   deleteItem() {
     this.props.delete(this.props.recipe.name);
   }
-
-  //a method that will add another recipe to our AppData array.
-
+  
   render() {
     return (
       <div>
